@@ -3,7 +3,7 @@ $config = json_decode(file_get_contents('config.json'));
 
 session_start();
 
-if ($_SESSION["state"] !== true) header('Location: /');
+if ($_SESSION["state"] !== true) header('Location: /?action=login');
 
 $URL = $config->api.'/'.$_GET["id"].'/'.$_SESSION["user"]->id.'?auth='.$config->authorization;
 
