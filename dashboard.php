@@ -38,7 +38,7 @@ if ($_SESSION["state"] !== true) header('Location: /');
         <div class="sidebar-wrapper" id="sidebar-wrapper">
             <ul class="nav">
                 <li class="active ">
-                    <a href="./dashboard.php">
+                    <a href="/dashboard.php">
                         <i class="now-ui-icons design_app"></i>
                         <p>Server List</p>
                     </a>
@@ -60,10 +60,7 @@ if ($_SESSION["state"] !== true) header('Location: /');
                     </div>
                     <p class="navbar-brand">Server List</p>
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-bar navbar-kebab"></span>
-                    <span class="navbar-toggler-bar navbar-kebab"></span>
-                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" >
                 </button>
             </div>
         </nav>
