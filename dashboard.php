@@ -14,7 +14,7 @@ if ($_SESSION["state"] !== true) header('Location: /');
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-Now UI Dashboard by Creative Tim
+Countr
 </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -31,8 +31,8 @@ Now UI Dashboard by Creative Tim
     <div class="sidebar" data-color="orange">
       <div class="logo">
         <img src="assets/img/Countr_Premium.png" class="logo-mini" />
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Countr
+        <a href="/" class="simple-text logo-normal">
+            <p style="text-align: center">Countr</p>
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -85,7 +85,7 @@ Now UI Dashboard by Creative Tim
                               echo '<tr>
                               <td class="text-left">'.$value->name.'</td>
                               <td class="td-actions text-right">
-                                 <a href="/process.php/?method=getserver&id='.$value->id.'&userid='.$_SESSION["user"]->id.'"><button type="button" rel="tooltip" title="Show" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                                 <a href="/process.php/?method=getserver&id='.$value->id.'&userid='.$_SESSION["user"]->id.'"><button type="button" rel="tooltip" title="Show: '.$value->name.'" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
                                       <i class="now-ui-icons ui-2_settings-90"></i>
                                   </button></a>
                               </td>
