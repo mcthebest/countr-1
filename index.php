@@ -50,16 +50,20 @@ if(get('code')) {
 
 if(session('access_token')) {
     $user = $provider->apiRequest($apiURLBase);
+    $guilds = $provider->apiRequest($apiURLBase.'/guilds');
 
-    echo '<h3>Logged In</h3>';
-    echo '<h4>Welcome, ' . $user->username . '</h4>';
-    echo '<pre>';
-    print_r($user);
-    echo '</pre>';
+    $_SESSION["user"] = $user;
+    $_SESSION["guilds"] = $guilds;
+
+    echo '<div class="box"><p style="color: white">Redirecting...</p></div>';
+    echo '<script>
+            window.location.replace("/dashboard.php");
+          </script>';
 
 } else {
-    echo '<h3>Not logged in</h3>';
-    echo '<p><a href="?action=login">Log In</a></p>';
+    echo '<div class="box"><h1>Login to Countr</h1><a href="/?action=login">
+           <button>Login with Discord</button>
+		</a></div>';
 }
 
 
