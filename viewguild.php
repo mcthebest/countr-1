@@ -116,7 +116,7 @@ if ($response->error == true)
                             <h4 class="card-title">Your spot in the leaderboard</h4>
                         </div>
                         <div class="card-body">
-                            <h3><?php echo $response->position ?></h3>
+                            <h3><?php echo $response->position + 1 ?></h3>
                         </div>
                     </div>
                 </div>
