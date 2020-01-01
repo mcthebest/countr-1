@@ -37,6 +37,15 @@ if(get('action') == 'login') {
     die();
 }
 
+if(get('action') == 'logout') {
+
+    // Redirect the user to Discord's authorization page
+    echo "<script>console.log('[COUNTR] Destroying session...')</script>";
+    session_destroy();
+    header("Refresh:0");
+    die();
+}
+
 
 // When Discord redirects the user back here, there will be a "code" and "state" parameter in the query string
 if(get('code')) {
