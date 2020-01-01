@@ -67,9 +67,16 @@ if(session('access_token')) {
 
     echo '<div class="box"><p style="color: white">Redirecting...</p></div>';
     echo "<script>console.log('[COUNTR] Redirecting to dashboard...')</script>";
-    echo '<script>
+    if (empty($_SESSION["serverwants"])) {
+        echo '<script>
             window.location.replace("/dashboard.php");
           </script>';
+    }
+    if (isset($_SESSION["serverwants"])) {
+        echo '<script>
+            window.location.replace("/viewguild.php/?id='.$_SESSION["serverwants"].'");
+          </script>';
+    }
 
 } else {
     echo '<div class="box"><h1>Login to Countr</h1><a href="/?action=login">
