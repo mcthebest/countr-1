@@ -18,3 +18,23 @@ if (in_array($METHOD, $METHODS) === false) {
 
 ini_set("allow_url_fopen", 1);
 
+if ($METHOD === "getserver") {
+    // Setting Params Variables
+    if (isset($_GET["id"])) $gs_id = $_GET["id"];
+    if (isset($_GET["userid"])) $gs_uid = $_GET["userid"];
+
+    // Checking for Variables
+    if (empty($gs_id)) echo '<script>window.history.back();</script>';
+    if (empty($gs_uid)) echo '<script>window.history.back();</script>';
+
+    $URL = $config->api.'/'.$gs_id.'/'.$gs_uid.'?auth='.$config->authorization;
+
+    $result = file_get_contents($URL, false);
+    $response = json_decode($result);
+
+    if ($response->error == true) {
+        echo '<script>window.location.replace("https://discordapp.com/oauth2/authorize?client_id=467377486141980682&scope=bot&guild_id='.$gs_id.'&response_type=code&redirect_uri=https://countr.thefabicraft.com/return/&permissions=805317648");</script>';
+    } else {
+        echo '<script>window.location.replace("/viewguild.php/?id='.$gs_id.'");</script>';
+    }
+}
