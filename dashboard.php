@@ -85,7 +85,7 @@ Now UI Dashboard by Creative Tim
                               echo '<tr>
                               <td class="text-left">'.$value->name.'</td>
                               <td class="td-actions text-right">
-                                 <a href="/process.php/?method=getserver&id='.$value->id.'"><button type="button" rel="tooltip" title="Show" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                                 <a href="/process.php/?method=getserver&id='.$value->id.'&userid='.$_SESSION["user"]->id.'"><button type="button" rel="tooltip" title="Show" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
                                       <i class="now-ui-icons ui-2_settings-90"></i>
                                   </button></a>
                               </td>
