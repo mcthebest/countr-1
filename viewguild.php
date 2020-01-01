@@ -59,7 +59,7 @@ if ($response->error == true)
                 <li>
                     <a href="/leaderboard.php/?id=<?php echo $_GET["id"] ?>">
                         <i class="now-ui-icons design_bullet-list-67"></i>
-                        <p>Server</p>
+                        <p>Leaderboard</p>
                     </a>
                 </li>
             </ul>
