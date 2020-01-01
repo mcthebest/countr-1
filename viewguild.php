@@ -86,6 +86,7 @@ if ($response->error == true)
         <!-- End Navbar -->
         <div class="panel-header panel-header-lg">
             <h1 style="color:white; text-align: center"><?php echo $response->guild->name ?></h1>
+            <h3 style="color:white; text-align: center">Overview</h3>
         </div>
         <div class="content">
             <div class="row">
