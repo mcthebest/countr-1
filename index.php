@@ -20,6 +20,7 @@
         '        CCCCCCCCCCCCC   ooooooooooo       uuuuuuuu  uuuunnnnnn    nnnnnn          ttttttttttt  rrrrrrr            \n' +
         '                                                                                                                  \n' +
         '                                                                                                                  ');
+    console.log('[COUNTR] Initializing...')
 </script>
 <?php
 require __DIR__ . '/classes/provider.php';
@@ -40,13 +41,16 @@ $tokenURL = 'https://discordapp.com/api/oauth2/token';
 $apiURLBase = 'https://discordapp.com/api/users/@me';
 
 $provider = new provider($config->clientId, $config->clientSecret, $config->redirectUrl);
+echo "<script>console.log('[COUNTR] Provider initialized.')</script>";
 
 session_start();
+echo "<script>console.log('[COUNTR] Session started.')</script>";
 
 // Start the login process by sending the user to Discord's authorization page
 if(get('action') == 'login') {
 
     // Redirect the user to Discord's authorization page
+    echo "<script>console.log('[COUNTR] Redirecting to login page...')</script>";
     header('Location: '.$provider->getAuthorizationUrl());
     die();
 }
@@ -56,6 +60,7 @@ if(get('action') == 'login') {
 if(get('code')) {
 
     // Exchange the auth code for a token
+    echo "<script>console.log('[COUNTR] Getting token.')</script>";
     $token = $provider->apiRequest($tokenURL, array(
         "grant_type" => "authorization_code",
         'client_id' => OAUTH2_CLIENT_ID,
@@ -78,6 +83,7 @@ if(session('access_token')) {
     $_SESSION["guilds"] = $guilds;
 
     echo '<div class="box"><p style="color: white">Redirecting...</p></div>';
+    echo "<script>console.log('[COUNTR] Redirecting to dashboard...')</script>";
     echo '<script>
             window.location.replace("/dashboard.php");
           </script>';
