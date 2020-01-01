@@ -1,0 +1,7 @@
+{
+  "clientId": "Your client ID here",
+  "clientSecret": "Your client secret here",
+  "redirectUrl": "Your redirect URL ",
+  "version": "0.0.1",
+  "api": "Your API URL here"
+}
