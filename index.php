@@ -42,7 +42,7 @@ if(get('action') == 'logout') {
     // Redirect the user to Discord's authorization page
     echo "<script>console.log('[COUNTR] Destroying session...')</script>";
     session_destroy();
-    header("Refresh:0");
+    header('Location: /');
     die();
 }
 
