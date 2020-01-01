@@ -52,7 +52,13 @@ if ($response->error == true)
                 </li>
                 <li class="active ">
                     <a href="/viewguild.php/?id=<?php echo $_GET["id"] ?>">
-                        <i class="now-ui-icons design_app"></i>
+                        <i class="now-ui-icons files_paper"></i>
+                        <p>Server</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/leaderboard.php/?id=<?php echo $_GET["id"] ?>">
+                        <i class="now-ui-icons design_bullet-list-67"></i>
                         <p>Server</p>
                     </a>
                 </li>
