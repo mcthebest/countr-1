@@ -11,6 +11,8 @@ $result = file_get_contents($URL, false);
 $response = json_decode($result);
 if ($response->error == true)
     echo '<script>window.history.back();</script>';
+include 'Mobile_Detect.php';
+$detect = new Mobile_Detect();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +89,13 @@ if ($response->error == true)
         <!-- End Navbar -->
         <div class="panel-header panel-header-lg">
             <h1 style="color:white; text-align: center"><?php echo $response->guild->name ?></h1>
-            <h3 style="color:white; text-align: center">Leaderboard</h3>
+            <?php
+            if ($detect->isMobile()) {
+
+            } else {
+                echo '<h3 style="color:white; text-align: center">Leaderboard</h3>';
+            }
+            ?>
         </div>
         <div class="content">
             <div class="row">
