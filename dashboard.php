@@ -84,7 +84,8 @@ if ($_SESSION["state"] !== true) header('Location: /');
                             <tbody>
                             <?php
                             foreach ($_SESSION["guilds"] as &$value) {
-                                echo '<tr>
+                                $permissions = ($value->permissions & 0x80) != 0;
+                                if ($permissions == 1) echo '<tr>
                               <td class="text-left">'.$value->name.'</td>
                               <td class="td-actions text-right">
                                  <a href="/process.php/?method=getserver&id='.$value->id.'&userid='.$_SESSION["user"]->id.'"><button type="button" rel="tooltip" title="Show: '.$value->name.'" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
