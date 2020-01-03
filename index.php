@@ -64,7 +64,7 @@ if(get('code')) {
         "grant_type" => "authorization_code",
         'client_id' => OAUTH2_CLIENT_ID,
         'client_secret' => OAUTH2_CLIENT_SECRET,
-        'redirect_uri' => 'https://countr.thefabicraft.com/',
+        'redirect_uri' => $config->redirectUrl,
         'code' => get('code')
     ));
     $logout_token = $token->access_token;
