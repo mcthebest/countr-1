@@ -22,7 +22,7 @@ if ($response->premium >= 1 && $response->premium < 3) {
 } elseif ($response->premium >= 3 && $detect->isMobile()) {
     $refreshingvalue = 20;
 } elseif ($response->premium >= 3) {
-    $refreshingvalue = 1;
+    $refreshingvalue = 3;
 }
 ?>
 <!DOCTYPE html>
@@ -118,15 +118,13 @@ if ($response->premium >= 1 && $response->premium < 3) {
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Count Activity</h4>
-                            <h6><?php
-                                if ($response->premium == 0) {
-                                    echo 'Refreshed: Now';
-                                } elseif ($response->premium >= 1 && $response->premium < 3) {
+                            <h6 id="counter"><?php
+                                if ($response->premium >= 1 && $response->premium < 3) {
                                     echo 'Refreshing in 30 secs';
                                 } elseif ($response->premium >= 3 && $detect->isMobile()) {
                                     echo 'Refreshing in 20 secs';
                                 } elseif ($response->premium >= 3) {
-                                    echo 'Live view';
+                                    echo 'Refreshed: Live';
                                 } else {
                                     echo ':D';
                                 }
@@ -193,11 +191,31 @@ setInterval(() => {
     let counter = 0;
     leaderboard.leaderboard.forEach(element => {
         counter++;
-        newleaderboard += leaderboard.part1 + counter + leaderboard.part2 + element.tag + leaderboard.part3 + element.count + leaderboard.part4;
+        newleaderboard += '<li><span class=\"list_num\">' + counter + '</span><h2>' + element.tag + '<span class=\"number\">' + element.count + '</span></h2></li>';
     });
     document.getElementById('leaderboard').innerHTML = newleaderboard;
   });
 }, ".$refreshingvalue."000);
+</script>";
+}
+if ($response->premium >= 1 && $response->premium < 3) {
+    echo "<script>
+let startvalue = ".$refreshingvalue."
+setInterval(() => {
+    if (startvalue === 0) startvalue = ".$refreshingvalue."
+    startvalue--;
+    document.getElementById('counter').innerHTML = 'Refreshing in '+ startvalue + ' secs'
+}, 1000);
+</script>";
+}
+if ($response->premium >= 3 && $detect->isMobile()) {
+    echo "<script>
+let startvalue = ".$refreshingvalue."
+setInterval(() => {
+    if (startvalue === 0) startvalue = ".$refreshingvalue."
+    startvalue--;
+    document.getElementById('counter').innerHTML = 'Refreshing in '+ startvalue + ' secs'
+}, 1000);
 </script>";
 }
 ?>
