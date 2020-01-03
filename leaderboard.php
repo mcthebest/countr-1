@@ -16,6 +16,14 @@ if ($response->error == true)
     echo '<script>window.history.back();</script>';
 include 'Mobile_Detect.php';
 $detect = new Mobile_Detect();
+
+if ($response->premium >= 1 && $response->premium < 3) {
+    $refreshingvalue = 30;
+} elseif ($response->premium >= 3 && $detect->isMobile()) {
+    $refreshingvalue = 20;
+} elseif ($response->premium >= 3) {
+    $refreshingvalue = 1;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,11 +118,24 @@ $detect = new Mobile_Detect();
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Count Activity</h4>
+                            <h6><?php
+                                if ($response->premium == 0) {
+                                    echo 'Refreshed: Now';
+                                } elseif ($response->premium >= 1 && $response->premium < 3) {
+                                    echo 'Refreshing in 30 secs';
+                                } elseif ($response->premium >= 3 && $detect->isMobile()) {
+                                    echo 'Refreshing in 20 secs';
+                                } elseif ($response->premium >= 3) {
+                                    echo 'Live view';
+                                } else {
+                                    echo ':D';
+                                }
+                                ?></h6>
                         </div>
                         <div class="card-body">
                             <div class="table">
                                 <div class="table-cell">
-                                    <ul class="leader">
+                                    <ul class="leader" id="leaderboard">
                                         <?php
                                         $counter = 0;
                                         foreach ($response->leaderboard as &$value) {
@@ -159,38 +180,27 @@ $detect = new Mobile_Detect();
 <script src="/assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script>
 <script src="/assets/demo/demo.js"></script>
 
-<script>
-    var ctx = document.getElementById('chartofweek').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
-        data: {
-            labels: ['7 days ago', '6 days ago', '5 days ago', '4 days ago', '3 days ago', 'Yesterday', 'Today'],
-            datasets: [{
-                label: 'Counts this day',
-                backgroundColor: '#BD4632',
-                borderColor: '#BD4632',
-                data: [<?php echo $response->log[6]; ?>, <?php echo $response->log[5]; ?>, <?php echo $response->log[4]; ?>, <?php echo $response->log[3]; ?>, <?php echo $response->log[2]; ?>, <?php echo $response->log[1]; ?>, <?php echo $response->log[0]; ?>]
-            }]
-        },
-
-        // Configuration options go here
-        options: {
-            legend: {
-                display: false
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        stepSize: 1
-                    }
-                }]
-            }
-        }
+<?php
+if ($response->premium >= 1) {
+    echo "<script>
+setInterval(() => {
+  fetch('https://api.promise.solutions/countr-analytics/leaderboard/".$_GET['id']."')
+  .then((response) => {
+    return response.json();
+  })
+  .then((leaderboard) => {
+    let newleaderboard = '';  
+    let counter = 0;
+    leaderboard.leaderboard.forEach(element => {
+        counter++;
+        newleaderboard += leaderboard.part1 + counter + leaderboard.part2 + element.tag + leaderboard.part3 + element.count + leaderboard.part4;
     });
-</script>
+    document.getElementById('leaderboard').innerHTML = newleaderboard;
+  });
+}, ".$refreshingvalue."000);
+</script>";
+}
+?>
 </body>
 
 </html>
