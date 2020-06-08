@@ -13,5 +13,4 @@ There is a lot of multi-purpose bots out there, some of them may also include a 
 
 [![discordbots.org](https://discordbots.org/api/widget/467377486141980682.svg)](https://discordbots.org/bot/countr)
 [![discordbotlist.com](https://discordbotlist.com/bots/467377486141980682/widget)](https://discordbotlist.com/bots/467377486141980682)
-[![divinediscordbots.com](https://divinediscordbots.com/api/widget/467377486141980682.svg)](https://divinediscordbots.com/bots/467377486141980682)
 [![discord.boats](https://discord.boats/api/widget/countr)](https://discord.boats/bot/countr)
