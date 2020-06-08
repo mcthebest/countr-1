@@ -2,8 +2,8 @@
 
 Countr is an advanced counting bot which can manage a counting channel in your guild. Head on over to [the Quick Setup Guide](/quicksetup) to set it up!
 
-> [!NOTE]
-> Countr has just been rewritten. If you find bugs, please go to our [issue tracker](https://github.com/gleeny/countr/issues) or go to our [support server](https://discord.gg/Ccj5bjb) to let us know, thank you!
+> [!WARNING]
+> Discord introduced a new rate limit to channel edits. It's changed from 5 times every 5 seconds, to 2 times every 10 minutes. The topic changes have been temporary disabled until a rewrite is coming. The rewrite will instead update the topic around every 5 minutes.
 
 ## Purpose
 
